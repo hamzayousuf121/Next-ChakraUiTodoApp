@@ -6,15 +6,12 @@ import { useState } from 'react';
 export default function Todo() {
 
     const [val, setVal] = useState<string>("")
-    const [buttonVal, setButtonVal] = useState<string>("Add")
-
     const [todos, setTodos]: any = useState<string[]>(["Zia", "Hamza", "Zeeshan"])
 
     const AddTodo = () => {
         if (!!val) {
             setTodos([...todos, val])
             setVal("");
-            setButtonVal("Add")
         }
     }
 
@@ -24,14 +21,6 @@ export default function Todo() {
         setTodos(array)
     }
 
-
-    let UpdateTodo = (id: number, todo: string) => {
-        setButtonVal("Update")
-        setVal(todo)
-        let array: string[] = [...todos]; // make a separate copy of the array
-        array.splice(id, 1, val);
-        setTodos(array)
-    }
     return (
         <Container mt={100}>
             <Heading color={"green"} textAlign={"center"}>Todo Application</Heading>
@@ -39,7 +28,7 @@ export default function Todo() {
                 <FormControl>
                     <Input type='text' value={val} onChange={(e) => setVal(e.target.value)} />
                 </FormControl>
-                <Button colorScheme='green' variant='solid' size='sm' onClick={AddTodo}> {buttonVal} Todo </Button>
+                <Button colorScheme='green' variant='solid' size='sm' onClick={AddTodo}>Add Todo </Button>
             </Stack>
 
 
